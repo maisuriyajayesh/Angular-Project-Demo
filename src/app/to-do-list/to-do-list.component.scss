@@ -12,6 +12,7 @@
     margin: 20px auto auto auto;
     padding: 15px;
     background-color: #f1f1f1;
+    text-transform: capitalize;
     li {
         position: relative;
         list-style: none;
@@ -21,6 +22,10 @@
         display: flex; 
         border-bottom: 1px dotted rgba(0,0,0,0.1);
         align-items: center;
+
+        &:last-child{
+            border: 0;
+        }
         
         button{
             margin: 0;
