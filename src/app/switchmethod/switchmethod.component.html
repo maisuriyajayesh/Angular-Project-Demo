@@ -1,0 +1,13 @@
+
+
+<h1 >{{title}}</h1>
+
+<!--Switch Method-->
+<div [ngSwitch]="color">
+<h1 *ngSwitchCase="'red'" style="color: red;">Red color</h1>
+<h1 *ngSwitchCase="'yellow'" style="color: yellow;">yellow color</h1>
+<h1 *ngSwitchCase="'blue'" style="color: blue;">blue color</h1>
+<h1 *ngSwitchCase="'skyblue'" style="color: skyblue;">skyblue color</h1>
+<h1 *ngSwitchDefault>No color</h1>
+</div>
+<!--Switch Method-->

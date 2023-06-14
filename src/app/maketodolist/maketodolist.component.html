@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form style="margin: 25px;" [formGroup]="form" (ngSubmit)="getData()">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">First Name</label>
+                            <input  type="text" class="form-control"  formControlName="firstName" [ngClass]="{ 'is-invalid' : isSubmit && !form.get('firstName')?.valid}" />
+            
+                            <span class="error-msg" *ngIf="isSubmit && !form.get('firstName')?.valid">
+                                First Name is required.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" formControlName="lastName" [ngClass]="{ 'is-invalid' : isSubmit && !form.get('lastName')?.valid}">
+            
+                            <span class="error-msg" *ngIf="isSubmit && !form.get('lastName')?.valid">
+                                last Name is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid' : isSubmit && !form.get('email')?.valid}" >
+            
+                            <span class="error-msg" *ngIf="isSubmit && !form.get('email')?.valid">
+                                Invalid email format.
+                              </span>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Password</label>
+                            <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid' : isSubmit && !form.get('password')?.valid}">
+                            <span class="error-msg" *ngIf="isSubmit && !form.get('password')?.valid">
+                                password is required.
+                            </span>
+                              
+            
+                        </div> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <button class="btn btn-primary" type="submit">Submit </button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-bordered text-center" border="1">
+                        <thead>
+                            <tr><th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Acticon</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             
+                            <tr *ngFor="let item of User; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.firstName}}</td>
+                                <td>{{item.lastName}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.password}}</td>
+                                <td>
+                                    <button class="btn btn-danger" (click)="removeTask(i)">Remove</button>
+                                    <button class="btn btn-danger" style="margin-left: 5px;" (click)="editData(i)">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

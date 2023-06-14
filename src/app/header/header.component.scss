@@ -1,0 +1,21 @@
+.navbar-nav {
+    width: 250px;
+    background-color: #f1f1f1;
+    height: 100vh;
+    .nav-item {
+        a {
+            display: block;
+            padding: 10px 5px 10px 15px;
+            text-decoration: none;
+            color: #333;
+            outline: none;
+            text-transform: capitalize;
+        }
+        .active-link {
+            font-weight: 500;
+            color: #fff;
+            background-color: #a13feb;
+            border-right: 10px solid #333;
+        }
+    }
+}

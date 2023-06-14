@@ -1,0 +1,143 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col">
+                    <h1>Employee Form</h1>
+                </div>
+            </div>
+            <div class="row">
+                <form #form="ngForm" >
+                    <div class="col-sm">
+                        <div class="row mb-2">
+                            <div class="col-sm">
+                                <label class="form-label">First Name</label>
+                                <input type="text" required #FirstName="ngModel" class="form-control"
+                                    [(ngModel)]="employeeObj.FirstName" name="FirstName">
+                                <div *ngIf="FirstName.touched"><span *ngIf="FirstName.errors?.['required']"> Errors First Name</span>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" required #LastName="ngModel" class="form-control"
+                                    [(ngModel)]="employeeObj.LastName" name="LastName">
+                                <div *ngIf="LastName.touched"><span *ngIf="LastName.errors?.['required']"> Errors Last Name</span></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm">
+                                <label class="form-label">Technology</label>
+                                <input type="text" required #Technology="ngModel" class="form-control"
+                                    [(ngModel)]="employeeObj.Technology" name="Technology">
+                                <div *ngIf="Technology.touched"><span *ngIf="Technology.errors?.['required']">Errors Technology</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm">
+                                <label class="form-label">Designation</label>
+                                <input type="text" required #Designation="ngModel" class="form-control"
+                                    [(ngModel)]="employeeObj.Designation" name="Designation">
+                                <div *ngIf="Designation.touched"><span *ngIf="Designation.errors?.['required']">Errors Designation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row mb-2">
+                            <div class="col-sm">
+                                <label class="form-label">Skill</label>
+                                <select type="text" class="form-control" [(ngModel)]="employeeObj.Skill" name="Skill"
+                                    required #Skill="ngModel">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                                <div *ngIf="Skill.touched"><span *ngIf="Skill.errors?.['required']"></span></div>
+                            </div>
+                        </div> -->
+                        <div class="row mb-2">
+                            <div class="col-sm">
+                                <label class="form-label">Compnay</label>
+                                <input type="text" required #Compnay="ngModel" class="form-control"
+                                    [(ngModel)]="employeeObj.Compnay" name="Compnay">
+                                <div *ngIf="Compnay.touched"><span *ngIf="Compnay.errors?.['required']">Errors Compnay</span></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm">
+                                <label class="form-label">Compnay Deatils</label>
+                                <textarea type="text" required #CompnayDeatils="ngModel" class="form-control"
+                                    [(ngModel)]="employeeObj.CompnayDeatils" name="CompnayDeatils"></textarea>
+                                <div *ngIf="CompnayDeatils.touched"><span
+                                        *ngIf="CompnayDeatils.errors?.['required']">Errors Compnay Deatils</span></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm text-end">
+                                <button class="btn btn-primary ms-3" [disabled]="form.invalid"
+                                    (click)="onSave(employeeObj)">Save</button>
+                                <button class="btn btn-primary ms-3">Cancle</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-sm">
+            <div class="row mb-4">
+                <div class="col">
+                    <h1>Employee LIst</h1>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm"></div>
+                <!-- <div class="col-sm-4"> 
+                    <select type="text" class="form-control" [(ngModel)]="sortby">
+                        <option>First Name</option>
+                        <option>Technology</option>
+                        <option>Designation</option>
+                        <option>Compnay</option>
+                        <option>Compnay Deatils</option>
+                    </select>
+                </div> -->
+                <div class="col-sm-4">
+                    <input type="text" [(ngModel)]="Searchdatalist" class="form-control" name="serachText">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sr</th>
+                                <th>Full Name</th>
+                                <th>Technology</th>
+                                <th>Designation</th>
+                                <th>Compnay</th>
+                                <th>Compnay Deatils</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of employeeArr | filter: Searchdatalist, let sr=index">
+                                <td>{{sr+1}}</td>
+                                <td>{{item.FirstName}} {{item.LastName}}</td>
+                                <td>{{item.Technology}}</td>
+                                <td>{{item.Designation}}</td>
+                                <td>{{item.Compnay}}</td>
+                                <td>{{item.CompnayDeatils}}</td>
+                                <td><button class="btn btn-primary ms-3" (click)="onEdit(item)">Edit</button>
+                                    <button class="btn btn-primary ms-3" (click)="onDelete(item)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

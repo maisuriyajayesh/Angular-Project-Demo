@@ -1,0 +1,49 @@
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body{
+    margin: 0;
+    padding: 0;
+}
+form{
+    label{
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+table{
+    width: 500px;
+    margin: auto;
+    thead{
+        tr{
+            td{
+                padding: 10px;
+            }
+        }
+    }
+    td{
+        padding: 10px;
+    }
+}
+h1{
+     display: block;  margin: 50px auto 50px auto; text-align: center;
+}
+
+.demo-center{
+    width: 1300px;
+    margin: auto;
+}
+button{
+    margin: 20px 0;
+}
+
+.header-text{
+    line-height: 37px;
+    font-size:25px;
+    font-weight: 500;
+    color: #383838;
+    margin: 15px 0;
+}

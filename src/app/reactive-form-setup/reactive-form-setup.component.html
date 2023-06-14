@@ -1,0 +1,80 @@
+<h1>Reactive Form Works!</h1>
+
+<div class="Form-Class w-50 m-auto">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="Full Name" name="FullName" formControlName="FullName">
+
+            <div class="alert alert-danger" *ngIf="FullName.touched && FullName.invalid">
+                <div *ngIf="FullName.errors && FullName.errors?.required"> Full Name is
+                    required..</div>
+                <div *ngIf="FullName.errors && FullName.errors?.minlength"> Full Name is must be
+                    5 charectors long..</div>
+            </div>
+
+
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Email" name="Email" formControlName="Email">
+            <div class="alert alert-danger" *ngIf="Email.touched && Email.invalid">
+                <div *ngIf="Email.errors && Email.errors?.required"> Email is required..</div>
+                <div *ngIf="Email.errors && Email.errors?.pattern"> invalid Email Address....</div>
+            </div>
+
+        </div>
+
+
+        <!-- Contact details nested From Group -->
+        <div formGroupName="contactDetails">
+            <div class="form-group mb-3">
+                <label class="form-label">Address</label>
+                <textarea type="text" cols="30" rows="3" class="form-control" placeholder="Address" name="Address"
+                    formControlName="Address"></textarea>
+                <div class="alert alert-danger" *ngIf="Address.touched && Address.invalid">
+                    <div *ngIf="Address.errors && Address.errors?.required"> Address is
+                        required..</div>
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label">Shiping Address</label>
+                <textarea type="text" cols="30" rows="3" class="form-control" placeholder="Shiping Address"
+                    name="ShipingAddress" formControlName="ShipingAddress"></textarea>
+                <div class="alert alert-danger" *ngIf="ShipingAddress.touched && ShipingAddress.invalid">
+                    <div *ngIf="ShipingAddress.errors && ShipingAddress.errors?.required"> Shiping Address is
+                        required..</div>
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label class="form-label">Contac No</label>
+                <input type="number" class="form-control" placeholder="Contact No" name="contactNo"
+                    formControlName="contactNo">
+                <div class="alert alert-danger" *ngIf="contactNo.touched && contactNo.invalid">
+                    <div *ngIf="contactNo.errors && contactNo.errors?.required"> Contact No is required..</div>
+                    <div *ngIf="contactNo.errors && contactNo.errors?.pattern"> invalid contact No....</div>
+                </div>
+            </div>
+            <!-- Contact details Array From Group -->
+            <div class="form-group mb-3">
+                <label class="form-label">Skills</label>
+                <input type="text" class="form-control" (keyup.enter)="addSkills(skill)" #skill>
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let skill of Skills.controls; let i = index ">
+                        {{skill.value}} 
+
+                        <a  class="btn btn-sm btn-danger" (click)="removeSkills(i)">X</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Contact details Array From Group -->
+        </div>
+
+        <!-- Contact details nested From Group -->
+
+
+        <div class="form-group mb-3">
+            <button class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+        </div>
+    </form>
+</div>

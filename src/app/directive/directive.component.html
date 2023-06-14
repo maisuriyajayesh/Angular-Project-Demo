@@ -1,0 +1,55 @@
+<h1 class="mt-3 mb-3">Directive</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <strong>ngFor javascript</strong>
+      <ul>
+        <li>{{ postArray[0] }}</li>
+        <li>{{ postArray[1] }}</li>
+        <li>{{ postArray[2] }}</li>
+        <li>{{ postArray[3] }}</li>
+        <li>{{ postArray[4] }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <strong>ngFor Anglur</strong>
+      <ul>
+        <li *ngFor="let post of postArray">{{post}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <strong>fatching object Array Anglur</strong>
+      <button (click)="addNew()">Add New Data</button>
+      <div *ngIf="objArray.length > 0">
+        <ul>
+          <li *ngFor="let post of objArray">{{post.postTitle}} <button (click)="onDelete(post)">Remove Data</button>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="objArray.length == 0">
+        <p>No Data</p>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col">
+      <strong>ng Swich case</strong>
+        <div>
+          <button (click)="onClick('step 1')">Step 1</button>
+          <button (click)="onClick('step 2')">Step 2</button>
+          <button (click)="onClick('step 3')">Step 3</button>
+        </div>
+        <br/>
+        <div [ngSwitch] = "stepForm" >
+           <div *ngSwitchCase= "'step 1'" >Step 1 Form</div>
+           <div *ngSwitchCase= "'step 2'" >Step 2 Form</div>
+           <div *ngSwitchCase= "'step 3'" >Step 3 Form</div>
+           <div *ngSwitchDefault>Somthing Else</div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center">Data Binding & Events Handling</h1>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-sm">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Post Title"
+        [(ngModel)]="postTitle"
+      />
+    </div>
+    <div class="col-sm">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Post image URL"
+        [(ngModel)]="imageURL"
+      />
+    </div>
+    <div class="col-sm">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Post URL"
+        [(ngModel)]="postURL"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <textarea
+        cols="30"
+        class="form-control"
+        rows="10"
+        placeholder="Post Details"
+        [(ngModel)]="PostDetails"
+      ></textarea>
+    </div>
+    <div class="col-sm">
+      <input type="checkbox" [(ngModel)]="addBackground" /> add Background
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center">Preview Form</h1>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-sm"><h1><span [class.add-background]="addBackground">{{ postTitle }}</span></h1></div>
+    <div class="col-sm"><img [src]="imageURL" alt="" /></div>
+    <div class="col-sm">
+      <a [href]="postURL" [style.display]="postURL? 'block' : 'none' "  target="_blank">More Details></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">{{ PostDetails }}</div>
+  </div>
+</div>

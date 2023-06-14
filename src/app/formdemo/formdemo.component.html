@@ -1,0 +1,40 @@
+
+<!--forms-->
+<h1 style="display: block; margin: 50px auto 50px auto; text-align: center;">{{title}}</h1>
+<form #basicform="ngForm" (ngSubmit)="getdata(basicform.value)"  style="margin: 20px auto 50px auto ; display: block; width: 300px; ">
+    <div style="margin-bottom: 15px; display: block;">
+      <label>Name</label>
+      <input type="text" ngModel name="username" placeholder="Enter user name" />
+    </div>
+    
+  <div style="margin-bottom: 15px; display: block;">
+    <label>email</label>
+    <input type="text" ngModel name="useremail" placeholder="Enter user name" /> 
+  </div>
+  <div style="margin-bottom: 15px; display: block;">
+    <label>Password</label>
+    <input type="text" ngModel name="userpassword" placeholder="Enter user name" /> 
+  </div>
+    
+  <div style="margin-bottom: 15px; display: block;">
+    <button>Submit</button>
+  </div>
+  </form>
+  
+  <table border="1">
+    <thead>
+       <tr>
+        <td>Name</td> <td>email</td> <td>Password</td>
+       </tr>
+    </thead>
+    
+    <tr>
+      <td>{{userData.username}}</td> 
+      <td>{{userData.useremail}}</td>
+      <td>{{userData.userpassword}}</td>
+    </tr>
+  
+  </table>
+  
+  
+  <!--forms-->

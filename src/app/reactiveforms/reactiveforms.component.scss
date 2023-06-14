@@ -1,0 +1,16 @@
+.form-group{
+    margin-bottom: 25px;
+    position: relative;
+    .alert.alert-danger{
+        padding: 3px;
+        background-color: transparent;
+        border: 0;
+        text-align: right;
+        color: red;
+        position: absolute;
+        width: 100%;
+    } 
+    .is-invalid {
+        border-color: red;
+      }
+}

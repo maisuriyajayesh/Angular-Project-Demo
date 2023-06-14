@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm justify-content-start">
+      <div class="header-text">Routing module Form list data </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm justify-content-start">
+      <div class="header-text">Form Deatils</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <form #ContactForm="ngForm">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" name="Name" [(ngModel)]="ContactData.Name" required #Name="ngModel"
+            minlength="5" [ngClass]="{'is-invalid': Name.touched && Name.invalid}" />
+          <div class="alert alert-danger" *ngIf="Name.touched && Name.invalid">
+            <span *ngIf="Name.errors?.['required']">Name is
+              required..</span>
+            <span *ngIf="Name.errors?.['minlength']">Full Name is must be
+              5 charectors long..</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="text" class="form-control" name="Email" [(ngModel)]="ContactData.Email" required #Email="ngModel"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [ngClass]="{'is-invalid': Email.touched && Email.invalid}" />
+          <div class="alert alert-danger" *ngIf="Email.touched && Email.invalid">
+            <span *ngIf="Email.errors?.['required']">Email is required..</span>
+            <span *ngIf="Email.errors?.['pattern']">invalid Email Address....</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mobille</label>
+          <input type="text" class="form-control" name="Mobile" [(ngModel)]="ContactData.Mobile" required
+            #Mobile="ngModel" pattern="[789][0-9]{9}" [ngClass]="{'is-invalid': Mobile.touched && Mobile.invalid}" />
+
+          <div class="alert alert-danger" *ngIf="Mobile.touched && Mobile.invalid">
+            <span *ngIf="Mobile.errors?.['required']">Contact No is required..</span>
+            <span *ngIf="Mobile.errors?.['pattern']">invalid contact No.... </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-24 text-end">
+            <button class="btn btn btn-primary" (click)="onSubmit(ContactData)" [disabled]="ContactForm.invalid">
+              Submit
+            </button>
+            <button class="btn btn btn-primary ms-3" (click)="BackToList()">
+              Back To List
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm">
+      <!-- <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobille</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of contactFormArr, let i = index ">
+                        <th>{{i + 1}}</th>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Email}}</td>
+                        <td>{{item.Mobile}}</td>
+                        <td class="text-center">
+                            <button class="btn btn btn-primary me-3">Edit</button>
+                            <button class="btn btn btn-primary">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> -->
+    </div>
+  </div>
+</div>

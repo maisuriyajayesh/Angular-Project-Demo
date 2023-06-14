@@ -1,0 +1,42 @@
+<h1>Directive Demo works!</h1>
+
+<div class="Form-Class">
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" placeholder="Name" [(ngModel)]="Name" >
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="Email">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Address</label>
+        <textarea type="text" class="form-control" placeholder="Address" [(ngModel)]="Address"></textarea>
+    </div>
+    <div class="mb-3">
+        <button (click)="onSave()">Save</button>
+    </div>
+</div>
+<div class="table" *ngIf="userArray.length > 0; else  noData">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userArray; let index = index">
+                <td>{{index + 1}}</td>
+                <td>{{user.Name}}</td>
+                <td>{{user.Email}}</td>
+                <td>{{user.Address}}</td>
+                <td><button (click)="onDelete(index)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+ <ng-template #noData> No Data For Now </ng-template>

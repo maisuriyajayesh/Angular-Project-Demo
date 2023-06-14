@@ -1,0 +1,17 @@
+
+
+<h1 style="display: block; margin: 50px auto 50px auto; text-align: center;">{{title}}</h1>
+
+<!--Nested loop Method-->
+
+<ul *ngFor="let user of userdeatils">
+  <li>{{user.name}}</li>
+  <li>{{user.email}}</li>
+  <li>{{user.phone}}</li>
+
+  <ul *ngFor="let account of user.socialaccounts ">
+    <li>{{account}}</li>
+  </ul>
+</ul>
+
+<!--Nested loop Method-->

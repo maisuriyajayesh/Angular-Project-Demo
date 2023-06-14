@@ -1,0 +1,75 @@
+<div class="row text-start">
+    <div class="col-12 mb-3">
+        <span>Type of Pipe</span>
+    </div>
+    <div class="col-12  mb-3">
+        <span>{{Title | uppercase}}, {{Title | lowercase}}</span>
+    </div>
+    <div class="col-12  mb-3">
+        <span>{{Count | number}}</span>
+    </div>
+    <div class="col-12  mb-3">
+        <span>{{dcValue | number: '1.2-2'}}</span>
+    </div>
+    <div class="col-12  mb-3">
+        <span>{{price | currency: "INR" : false:'2.2-2' }}</span>
+    </div>
+    <div class="col-12  mb-3">
+        <span>{{today | date : "shortDate" }} <strong>OR</strong> {{today | date : "short" }} <strong>OR</strong>
+            {{today | date}} <strong>OR</strong> {{today}}</span>
+    </div>
+    <div class="col-12  mb-3">
+        <span>{{ postObj | json}}</span>
+    </div>
+    <div class="col-12  mb-3">
+        <span>{{ 0.568 | percent}}</span>
+    </div>
+    <div class="col-12  mb-3">
+        <span>{{postArray | slice : 2:5 }}</span>
+    </div>
+
+    <div class="col-12  mb-3">
+        <span>Custom Pipe 1</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h1>Pipe Method</h1>
+        <span>City Name - {{userdetails.city}}</span>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-6 text-start">
+        <h2>Search Data</h2>
+    </div>
+    <div class="col-6">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="search here...">
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-12">
+        <table class="table  table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                    <th>Phone</th>
+                    <th>Social Account</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of userdeatils | pipeFilter: searchTerm; let i=index">
+                    <td>{{i + 1}}</td>
+                    <td>{{item.name | titlecase}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.socialaccounts}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,36 @@
+
+
+<h1 style="display: block; margin: 50px auto 50px auto; text-align: center;">{{title}}</h1>
+
+<!--loop Method-->
+<!-- <h3 *ngFor="let item of users" style="color: black;">Name : {{item}} </h3>  -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table  table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Phone</th>
+                        <th>Social Account</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of userdeatils; let i=index" >
+                        <td>{{i + 1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.phone}}</td>
+                        <td>{{item.socialaccounts}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!--loop Method-->

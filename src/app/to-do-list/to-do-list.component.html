@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="card">
+        <form #userForm="ngForm">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm">
+                        <input class="form-control" type="text" name="Name" [(ngModel)]="student.Name">
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary" (click)="onAdd(userForm)">Add</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="container">
+    <ul class="card card-box-data">
+        <li *ngFor="let user of studentArr"> 
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="checkbox" id="flexCheckDefault" >
+                <label class="form-check-label" for="flexCheckDefault">
+                    {{user.Name}}
+                </label>
+              </div>
+            <div class="btn-group">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                 More
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                  <li><a class="dropdown-item">Edit</a></li>
+                  <li><a class="dropdown-item">Remove</a></li>
+                  <li><a class="dropdown-item">Save</a></li>
+                </ul>
+              </div>
+
+        </li>
+    </ul>
+</div>
