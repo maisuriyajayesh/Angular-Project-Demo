@@ -17,16 +17,34 @@ export class ToDoListComponent implements OnInit {
     studentId: 0,
     Name: '',
   }
+  userForm: any;
   onAdd(userForm: any) {
-    this.student.studentId = this.studentArr.length + 1;
-    this.studentArr.push(this.student);
-    localStorage.setItem("studentlist", JSON.stringify(this.studentArr));
-    this.student = {
-      studentId: 0,
-      Name: ''
+    let editData = this.studentArr.findIndex((obj) => this.student.studentId == obj.studentId)
+    if (editData > -1) {
+      //console.log("if part", editData);
+      this.studentArr[editData].Name = this.student.Name;
+      this.student.Name = "";
+    } else {
+      //console.log("else part", editData);
+      this.student.studentId = this.studentArr.length + 1;
+      this.studentArr.push(this.student);
+      localStorage.setItem("studentlist", JSON.stringify(this.studentArr));
+      this.student = {
+        studentId: 0,
+        Name: ''
+      }
     }
   }
-  onEdit(user:any){
+  onEdit(index: any) {
+    let filterData = this.studentArr[index];
+    this.student.Name = filterData.Name;
+    this.student.studentId = filterData.studentId
+    //console.log(this.student);
+  }
+  onRemove(i: number) {
+    let index = this.studentArr.findIndex((obj) => this.student.studentId == obj.studentId);
+    this.studentArr.splice(index, 1);
+    localStorage.setItem("studentlist", JSON.stringify(this.studentArr));
 
   }
   ngOnInit(): void {

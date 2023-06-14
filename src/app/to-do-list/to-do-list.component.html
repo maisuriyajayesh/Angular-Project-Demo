@@ -4,10 +4,10 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm">
-                        <input class="form-control" type="text" name="Name" [(ngModel)]="student.Name">
+                        <input class="form-control" type="text" name="Name" [(ngModel)]="student.Name" required>
                     </div>
                     <div class="col-auto">
-                        <button class="btn btn-primary" (click)="onAdd(userForm)">Add</button>
+                        <button class="btn btn-primary" (click)="onAdd(userForm)" [disabled]="userForm.invalid">Add</button>
                     </div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
 </div>
 <div class="container">
     <ul class="card card-box-data">
-        <li *ngFor="let user of studentArr"> 
+        <li *ngFor="let user of studentArr; let i = index"> 
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="checkbox" [(ngModel)]="user.isChecked" >
                 <label class="form-check-label">
@@ -29,9 +29,8 @@
                  More
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-                  <li><a class="dropdown-item" (click)="onEdit(user)" >Edit</a></li>
-                  <li><a class="dropdown-item">Remove</a></li>
-                  <li><a class="dropdown-item">Save</a></li>
+                  <li><a class="dropdown-item" (click)="onEdit(i)" >Edit</a></li>
+                  <li><a class="dropdown-item" (click)="onRemove(i)">Remove</a></li>
                 </ul>
               </div>
         </li>
