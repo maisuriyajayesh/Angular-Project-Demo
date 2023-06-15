@@ -35,6 +35,7 @@ export class ToDoListComponent implements OnInit {
       }
     }
   }
+  
   onEdit(index: any) {
     let filterData = this.studentArr[index];
     this.student.Name = filterData.Name;

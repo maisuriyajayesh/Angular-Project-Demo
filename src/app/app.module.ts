@@ -30,6 +30,7 @@ import { PostService } from './services/post.service';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ReactiveFormSetupComponent } from './reactive-form-setup/reactive-form-setup.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
+import { GridViewHightComponent } from './grid-view-hight/grid-view-hight.component';
  
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ToDoListComponent } from './to-do-list/to-do-list.component';
     ServiceDemoComponent,
     TemplateDrivenFormComponent,
     ReactiveFormSetupComponent,
-    ToDoListComponent
+    ToDoListComponent,
+    GridViewHightComponent
     
   ],
   imports: [

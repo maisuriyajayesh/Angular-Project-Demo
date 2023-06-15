@@ -4,7 +4,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm">
-                        <input class="form-control" type="text" name="Name" [(ngModel)]="student.Name" required>
+                        <input class="form-control" type="text" name="Name" [(ngModel)]="student.Name"  required>
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-primary" (click)="onAdd(userForm)" [disabled]="userForm.invalid">Add</button>
@@ -17,7 +17,7 @@
 </div>
 <div class="container">
     <ul class="card card-box-data">
-        <li *ngFor="let user of studentArr; let i = index"> 
+        <li *ngFor="let user of studentArr | filter: student.Name ; let i = index"> 
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="checkbox" [(ngModel)]="user.isChecked" >
                 <label class="form-check-label">

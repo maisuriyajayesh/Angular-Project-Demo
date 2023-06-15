@@ -21,6 +21,7 @@ import { ServiceDemoComponent } from './services/service-demo/service-demo.compo
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ReactiveFormSetupComponent } from './reactive-form-setup/reactive-form-setup.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
+import { GridViewHightComponent } from './grid-view-hight/grid-view-hight.component';
 
 const routes: Routes = [
   {
@@ -111,6 +112,10 @@ const routes: Routes = [
   {
     path: 'twowaybinding',
     component: TwowaybindingComponent
+  },
+  {
+    path: 'grid-view-hight',
+    component: GridViewHightComponent
   },
 
 ];
