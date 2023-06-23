@@ -1,0 +1,26 @@
+.dynamic-height-grid .ag-root-wrapper {
+    height: unset !important;
+  }
+  
+  .dynamic-height-grid .ag-body-viewport {
+    overflow: hidden !important;
+  }
+  :host ::ng-deep .ag-theme-alpine .ag-root-wrapper {
+    width: 100% !important;
+    overflow-x: auto;
+  }
+  
+  :host ::ng-deep .ag-theme-alpine .ag-root-wrapper .ag-root {
+    width: 100% !important;
+  }
+  .ag-grid-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  :host ::ng-deep .ag-theme-alpine .ag-root-wrapper {
+    width: fit-content;
+    min-width: 100%;
+  }
+  
+  

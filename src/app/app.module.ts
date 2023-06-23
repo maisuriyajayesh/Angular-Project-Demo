@@ -31,7 +31,9 @@ import { TemplateDrivenFormComponent } from './template-driven-form/template-dri
 import { ReactiveFormSetupComponent } from './reactive-form-setup/reactive-form-setup.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { GridViewHightComponent } from './grid-view-hight/grid-view-hight.component';
- 
+import { AgGridModule } from 'ag-grid-angular';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,9 @@ import { GridViewHightComponent } from './grid-view-hight/grid-view-hight.compon
     BrowserAnimationsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
+    AgGridModule,
+    HttpClientModule
+
     
   ],
   providers: [PostService],

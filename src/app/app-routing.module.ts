@@ -60,10 +60,10 @@ const routes: Routes = [
     path: 'service-demo',
     component: ServiceDemoComponent
   },
-  // {
-  //   path: 'reactiveforms/:id',
-  //   component: ReactiveformsComponent
-  // },
+    // {
+    //   path: 'reactiveforms',
+    //   component: ReactiveformsComponent
+    // },
   {
     path: 'form-deatils-list',
     component: FormDeatilsListComponent
