@@ -35,6 +35,20 @@ export class ToDoListComponent implements OnInit {
       }
     }
   }
+  selectAll:any;
+  
+  toggleSelectAll(): void {
+    this.selectAll = !this.selectAll;
+    for (let user of this.studentArr) {
+      user.isChecked = this.selectAll;
+    }
+  }
+  RemoveAll():void{
+  const removelist = this.studentArr.filter(obj => !obj.isChecked);
+  this.studentArr = removelist
+    //this.studentArr.splice(user.isChecked);
+    localStorage.setItem("studentlist", JSON.stringify(this.studentArr));
+  }
   
   onEdit(index: any) {
     let filterData = this.studentArr[index];

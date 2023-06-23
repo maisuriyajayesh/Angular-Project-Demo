@@ -4,10 +4,11 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm">
-                        <input class="form-control" type="text" name="Name" [(ngModel)]="student.Name"  required>
+                        <input class="form-control" type="text" name="Name" [(ngModel)]="student.Name" required>
                     </div>
                     <div class="col-auto">
-                        <button class="btn btn-primary" (click)="onAdd(userForm)" [disabled]="userForm.invalid">Add</button>
+                        <button class="btn btn-primary" (click)="onAdd(userForm)"
+                            [disabled]="userForm.invalid">Add</button>
                     </div>
                 </div>
             </div>
@@ -17,22 +18,43 @@
 </div>
 <div class="container">
     <ul class="card card-box-data">
-        <li *ngFor="let user of studentArr | filter: student.Name ; let i = index"> 
+        <li style="background-color: #fff; padding: 10px; border-radius: 10px;">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="checkbox" [(ngModel)]="user.isChecked" >
+                <input class="form-check-input" type="checkbox" value="checkbox" [checked]="selectAll"
+                    (change)="toggleSelectAll()">
+                <label class="form-check-label">
+                    Checked All
+                </label>
+            </div>
+            <div>
+                Remove all : <i class="bi bi-trash-fill" (click)="RemoveAll()"
+                    style="cursor: pointer; font-size: 22px; color: red;"></i>
+            </div>
+
+
+
+        </li>
+        <li *ngFor="let user of studentArr | filter: student.Name ; let i = index">
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="checkbox" [(ngModel)]="user.isChecked">
                 <label class="form-check-label">
                     {{user.Name}}
                 </label>
-              </div>
+            </div>
+
+
+
             <div class="btn-group" *ngIf="user.isChecked">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-                 More
-                </button>
+                <i class="bi bi-three-dots-vertical" id="defaultDropdown" data-bs-toggle="dropdown"
+                    data-bs-auto-close="true" aria-expanded="false" style="cursor: pointer;"></i>
                 <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-                  <li><a class="dropdown-item" (click)="onEdit(i)" >Edit</a></li>
-                  <li><a class="dropdown-item" (click)="onRemove(i)">Remove</a></li>
+                    <li><i class="bi bi-pencil-square" (click)="onEdit(i)" style="cursor: pointer; margin: auto;"></i>
+                    </li>
+                    <li><i class="bi bi-trash-fill" (click)="onRemove(i)" style="cursor: pointer; margin: auto;"></i>
+                    </li>
                 </ul>
-              </div>
+            </div>
         </li>
     </ul>
 </div>
