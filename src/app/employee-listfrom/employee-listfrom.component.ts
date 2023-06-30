@@ -13,12 +13,15 @@ export class EmployeeListfromComponent implements OnInit {
   employeeArr: employeeObj[] = [];
   employeeList: any = [];
   Searchdatalist: '' = "";
+  noData: boolean;
+  hasData: boolean;
 
   constructor() {
     this.employeeObj = new employeeObj();
     this.sortby = '';
     this.serachText = '';
-
+    this.hasData = this.employeeArr.length > 0;
+    this.noData = !this.hasData;
   }
 
   onSave(modelData: any) {

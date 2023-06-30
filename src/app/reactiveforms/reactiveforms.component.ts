@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-reactiveforms',
@@ -17,25 +16,20 @@ export class ReactiveformsComponent implements OnInit {
     Email: '',
     Mobile: '',
   };
-
   onSubmit(ContactForm: any): void {
     const existingData = localStorage.getItem('studentlist');
     if (existingData) {
       this.ContactDataArr = JSON.parse(existingData) as Array<any>;
     }
-
     const newData = {
       ContactDataId: this.ContactData.ContactDataId || Date.now(),
       Name: this.ContactData.Name,
       Mobile: this.ContactData.Mobile,
       Email: this.ContactData.Email,
     };
-
-
     const existingIndex = this.ContactDataArr.findIndex(
       (data) => data.ContactDataId === this.ContactData.ContactDataId
     );
-
     if (existingIndex !== -1) {
       this.ContactDataArr[existingIndex] = newData;
       this.router.navigate(['form-deatils-list'], {
@@ -46,7 +40,6 @@ export class ReactiveformsComponent implements OnInit {
       this.ContactDataArr.push(newData);
       this.router.navigate(['form-deatils-list']);
     }
-
     localStorage.setItem('studentlist', JSON.stringify(this.ContactDataArr));
     this.ContactData = {
       ContactDataId: 0,
@@ -55,12 +48,9 @@ export class ReactiveformsComponent implements OnInit {
       Email: '',
     };
   }
-
   BackToList() {
     this.router.navigate(['form-deatils-list']);
   }
-
-
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
       if (params['id']) {
@@ -77,6 +67,4 @@ export class ReactiveformsComponent implements OnInit {
       }
     });
   }
-
-
 }

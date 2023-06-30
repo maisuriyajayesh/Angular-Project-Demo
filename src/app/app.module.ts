@@ -33,6 +33,7 @@ import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { GridViewHightComponent } from './grid-view-hight/grid-view-hight.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { OfficePunchDataComponent } from './office-punch-data/office-punch-data.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { HttpClientModule } from '@angular/common/http';
     TemplateDrivenFormComponent,
     ReactiveFormSetupComponent,
     ToDoListComponent,
-    GridViewHightComponent
+    GridViewHightComponent,
+    OfficePunchDataComponent
     
   ],
   imports: [

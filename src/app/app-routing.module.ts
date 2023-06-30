@@ -22,6 +22,7 @@ import { TemplateDrivenFormComponent } from './template-driven-form/template-dri
 import { ReactiveFormSetupComponent } from './reactive-form-setup/reactive-form-setup.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { GridViewHightComponent } from './grid-view-hight/grid-view-hight.component';
+import { OfficePunchDataComponent } from './office-punch-data/office-punch-data.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'reactive-form-setup',
     component: ReactiveFormSetupComponent,
+  },
+  {
+    path: 'office-punch-data',
+    component: OfficePunchDataComponent,
   },
   {
     path: 'to-do-list',

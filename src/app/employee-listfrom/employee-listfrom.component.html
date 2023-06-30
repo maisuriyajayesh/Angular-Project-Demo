@@ -7,21 +7,39 @@
                 </div>
             </div>
             <div class="row">
-                <form #form="ngForm" >
+                <form #form="ngForm">
                     <div class="col-sm">
                         <div class="row mb-2">
                             <div class="col-sm">
                                 <label class="form-label">First Name</label>
                                 <input type="text" required #FirstName="ngModel" class="form-control"
-                                    [(ngModel)]="employeeObj.FirstName" name="FirstName">
-                                <div *ngIf="FirstName.touched"><span *ngIf="FirstName.errors?.['required']"> Errors First Name</span>
+                                    [(ngModel)]="employeeObj.FirstName" name="FirstName" required minlength="5"
+                                    [ngClass]="{'is-invalid': FirstName.touched && FirstName.invalid}">
+                                <div class="error-class">
+                                    <div *ngIf="FirstName.touched && FirstName.invalid ">
+                                        <span *ngIf="FirstName.errors?.['required']"> Errors First Name</span>
+                                        <span *ngIf="FirstName.errors?.['minlength']">First Name is must be
+                                            5 charectors long..</span>
+                                    </div>
                                 </div>
+
                             </div>
+
+                        </div>
+                        <div class="row mb-2">
                             <div class="col-sm">
                                 <label class="form-label">Last Name</label>
                                 <input type="text" required #LastName="ngModel" class="form-control"
-                                    [(ngModel)]="employeeObj.LastName" name="LastName">
-                                <div *ngIf="LastName.touched"><span *ngIf="LastName.errors?.['required']"> Errors Last Name</span></div>
+                                    [(ngModel)]="employeeObj.LastName" name="LastName" required minlength="5"
+                                    [ngClass]="{'is-invalid': LastName.touched && LastName.invalid}">
+                                <div class="error-class">
+                                    <div *ngIf="LastName.touched && LastName.invalid ">
+                                        <span *ngIf="LastName.errors?.['required']"> Errors Last Name</span>
+                                        <span *ngIf="LastName.errors?.['minlength']">Last Name is must be
+                                            5 charectors long..</span>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -29,7 +47,11 @@
                                 <label class="form-label">Technology</label>
                                 <input type="text" required #Technology="ngModel" class="form-control"
                                     [(ngModel)]="employeeObj.Technology" name="Technology">
-                                <div *ngIf="Technology.touched"><span *ngIf="Technology.errors?.['required']">Errors Technology</span>
+                                <div class="error-class">
+                                    <div *ngIf="Technology.touched"><span *ngIf="Technology.errors?.['required']">Errors
+                                            Technology</span>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -38,29 +60,24 @@
                                 <label class="form-label">Designation</label>
                                 <input type="text" required #Designation="ngModel" class="form-control"
                                     [(ngModel)]="employeeObj.Designation" name="Designation">
-                                <div *ngIf="Designation.touched"><span *ngIf="Designation.errors?.['required']">Errors Designation</span>
+                                <div class="error-class">
+                                    <div *ngIf="Designation.touched"><span
+                                            *ngIf="Designation.errors?.['required']">Errors
+                                            Designation</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row mb-2">
-                            <div class="col-sm">
-                                <label class="form-label">Skill</label>
-                                <select type="text" class="form-control" [(ngModel)]="employeeObj.Skill" name="Skill"
-                                    required #Skill="ngModel">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                                <div *ngIf="Skill.touched"><span *ngIf="Skill.errors?.['required']"></span></div>
-                            </div>
-                        </div> -->
                         <div class="row mb-2">
                             <div class="col-sm">
                                 <label class="form-label">Compnay</label>
                                 <input type="text" required #Compnay="ngModel" class="form-control"
                                     [(ngModel)]="employeeObj.Compnay" name="Compnay">
-                                <div *ngIf="Compnay.touched"><span *ngIf="Compnay.errors?.['required']">Errors Compnay</span></div>
+                                <div class="error-class">
+                                    <div *ngIf="Compnay.touched"><span *ngIf="Compnay.errors?.['required']">Errors
+                                            Compnay</span></div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -68,8 +85,12 @@
                                 <label class="form-label">Compnay Deatils</label>
                                 <textarea type="text" required #CompnayDeatils="ngModel" class="form-control"
                                     [(ngModel)]="employeeObj.CompnayDeatils" name="CompnayDeatils"></textarea>
-                                <div *ngIf="CompnayDeatils.touched"><span
-                                        *ngIf="CompnayDeatils.errors?.['required']">Errors Compnay Deatils</span></div>
+                                <div class="error-class">
+                                    <div *ngIf="CompnayDeatils.touched"><span
+                                            *ngIf="CompnayDeatils.errors?.['required']">Errors Compnay Deatils</span>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -83,10 +104,6 @@
                 </form>
             </div>
         </div>
-
-
-
-
         <div class="col-sm">
             <div class="row mb-4">
                 <div class="col">
@@ -95,15 +112,6 @@
             </div>
             <div class="row mb-3">
                 <div class="col-sm"></div>
-                <!-- <div class="col-sm-4"> 
-                    <select type="text" class="form-control" [(ngModel)]="sortby">
-                        <option>First Name</option>
-                        <option>Technology</option>
-                        <option>Designation</option>
-                        <option>Compnay</option>
-                        <option>Compnay Deatils</option>
-                    </select>
-                </div> -->
                 <div class="col-sm-4">
                     <input type="text" [(ngModel)]="Searchdatalist" class="form-control" name="serachText">
                 </div>
@@ -117,23 +125,31 @@
                                 <th>Full Name</th>
                                 <th>Technology</th>
                                 <th>Designation</th>
-                                <th>Compnay</th>
-                                <th>Compnay Deatils</th>
+                                <th>Company</th>
+                                <th>Company Details</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of employeeArr | filter: Searchdatalist, let sr=index">
-                                <td>{{sr+1}}</td>
-                                <td>{{item.FirstName}} {{item.LastName}}</td>
-                                <td>{{item.Technology}}</td>
-                                <td>{{item.Designation}}</td>
-                                <td>{{item.Compnay}}</td>
-                                <td>{{item.CompnayDeatils}}</td>
-                                <td><button class="btn btn-primary ms-3" (click)="onEdit(item)">Edit</button>
-                                    <button class="btn btn-primary ms-3" (click)="onDelete(item)">Delete</button>
-                                </td>
-                            </tr>
+                            <ng-container *ngIf="employeeArr.length > 0; else noData">
+                                <tr *ngFor="let item of employeeArr | filter: Searchdatalist; let sr = index">
+                                    <td>{{ sr + 1 }}</td>
+                                    <td>{{ item.FirstName }} {{ item.LastName }}</td>
+                                    <td>{{ item.Technology }}</td>
+                                    <td>{{ item.Designation }}</td>
+                                    <td>{{ item.Company }}</td>
+                                    <td>{{ item.CompanyDetails }}</td>
+                                    <td>
+                                        <button class="btn btn-primary ms-3" (click)="onEdit(item)">Edit</button>
+                                        <button class="btn btn-primary ms-3" (click)="onDelete(item)">Delete</button>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <ng-template #noData>
+                                <tr align="center">
+                                    <td colspan="7" style="padding: 50px;">No Record here...</td>
+                                </tr>
+                            </ng-template>
                         </tbody>
                     </table>
                 </div>

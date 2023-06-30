@@ -8,14 +8,10 @@ import { ColDef } from 'ag-grid-community';
   styleUrls: ['./form-deatils-list.component.scss']
 })
 export class FormDeatilsListComponent implements OnInit {
-
   public defaultColDef: ColDef = {
-    sortable: true, 
+    sortable: true,
     filter: true,
     suppressMovable: true
-    
-    
-  
     //resizable: true
   };
   rowHeight = 55;
@@ -26,25 +22,23 @@ export class FormDeatilsListComponent implements OnInit {
     const totalHeight = (rowCount * rowHeight) + headerHeight;
     return totalHeight + 'px';
   }
-  
-  constructor(
 
+  constructor(
     private router: Router
   ) {
     this.contactFormArr = [
     ];
-
     this.columnDefs = [
-      { headerName: '#', field: 'index', valueGetter: 'node.rowIndex + 1', flex: 1 , suppressSizeToFit: true},
-      { headerName: 'Name', field: 'Name', flex: 1, suppressSizeToFit: true  },
-      { headerName: 'Email', field: 'Email', flex: 1, suppressSizeToFit: true  },
-      { headerName: 'Mobile', field: 'Mobile' , flex: 1, suppressSizeToFit: true  },
+      { headerName: '#', field: 'index', valueGetter: 'node.rowIndex + 1', width: 60, suppressSizeToFit: true },
+      { headerName: 'Name', field: 'Name', flex: 1, suppressSizeToFit: true },
+      { headerName: 'Email', field: 'Email', flex: 1, suppressSizeToFit: true },
+      { headerName: 'Mobile', field: 'Mobile', width: 160, suppressSizeToFit: true },
       {
-        headerName: 'Action', flex: 1, suppressSizeToFit: true, 
+        headerName: 'Action', width: 120, suppressSizeToFit: true,
         cellRenderer: (params: any) => {
           return `
-            <button class="btn btn-sm btn-primary m-0" data-action-type="editFormData">Edit</button>
-            <button class="btn btn-sm btn-danger m-0" data-action-type="removeFormData">Remove</button>
+            <button class="btn btn-sm btn-primary m-0" data-action-type="editFormData"><i class="bi bi-pencil-fill"></i></button>
+            <button class="btn btn-sm btn-danger m-0" data-action-type="removeFormData"><i class="bi bi-trash3-fill"></i></button>
           `;
         },
       }
@@ -61,12 +55,10 @@ export class FormDeatilsListComponent implements OnInit {
     Email: '',
     Mobile: ''
   };
-
   public onCellClicked(params: any) {
     if (params.event.target.tagName === 'BUTTON') {
       const actionType = params.event.target.getAttribute('data-action-type');
       const dataItem = params.data;
-
       switch (actionType) {
         case 'editFormData':
           this.editFormData(dataItem);
@@ -77,16 +69,12 @@ export class FormDeatilsListComponent implements OnInit {
       }
     }
   }
-
-
   public editFormData(item: any) {
     this.router.navigate(['reactiveforms'], { queryParams: { id: item.ContactDataId } });
   }
-
   AddNewEntry() {
-    this.router.navigate(['/reactiveforms']);
+    this.router.navigate(['reactiveforms']);
   }
-
   removeFormData(item: any) {
     let index = this.contactFormArr.findIndex(obj => obj.ContactDataId === item.ContactDataId);
     if (index !== -1) {
@@ -100,15 +88,11 @@ export class FormDeatilsListComponent implements OnInit {
       this.contactFormArr = [];
     }
   }
-
-
-
-
-
   ngOnInit(): void {
     const existingData = localStorage.getItem("studentlist");
     if (existingData) {
       this.contactFormArr = JSON.parse(existingData);
     }
+
   }
 }
