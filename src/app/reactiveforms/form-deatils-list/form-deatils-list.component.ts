@@ -30,15 +30,18 @@ export class FormDeatilsListComponent implements OnInit {
     ];
     this.columnDefs = [
       { headerName: '#', field: 'index', valueGetter: 'node.rowIndex + 1', width: 60, suppressSizeToFit: true },
-      { headerName: 'Name', field: 'Name', flex: 1, suppressSizeToFit: true },
+      { headerName: 'Name', field: 'Name', flex: 1, },
       { headerName: 'Email', field: 'Email', flex: 1, suppressSizeToFit: true },
       { headerName: 'Mobile', field: 'Mobile', width: 160, suppressSizeToFit: true },
       {
         headerName: 'Action', width: 120, suppressSizeToFit: true,
         cellRenderer: (params: any) => {
           return `
-            <button class="btn btn-sm btn-primary m-0" data-action-type="editFormData"><i class="bi bi-pencil-fill"></i></button>
-            <button class="btn btn-sm btn-danger m-0" data-action-type="removeFormData"><i class="bi bi-trash3-fill"></i></button>
+          <div>
+          <button class="btn btn-sm btn-primary m-0 bi bi-pencil-fill" data-action-type="editFormData"></button>
+            <button class="btn btn-sm btn-danger m-0 bi bi-trash3-fill" data-action-type="removeFormData"></button>
+          </div>  
+          
           `;
         },
       }
