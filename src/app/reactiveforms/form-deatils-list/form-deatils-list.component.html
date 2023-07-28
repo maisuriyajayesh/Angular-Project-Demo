@@ -5,35 +5,29 @@
         </div>
     </div>
 </div>
-
 <div class="container">
     <div class="row ">
         <div class="col d-flex align-items-center">
-            <div class="header-text">Form Deatils List</div> 
+            <div class="header-text">Form Deatils List</div>
         </div>
         <div class="col-auto d-flex align-items-center">
-            <i class="bi bi-plus-square-fill" (click)="AddNewEntry()" style="font-size: 30px; color: #0b5ed7; cursor: pointer;"></i>
+            <i class="bi bi-plus-square-fill" (click)="AddNewEntry()"
+                style="font-size: 30px; color: #0b5ed7; cursor: pointer;"></i>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-           
-            <ag-grid-angular
-            [rowData]="contactFormArr"
-            [columnDefs]="columnDefs"
+            <ag-grid-angular 
+            [rowData]="contactFormArr" 
+            [columnDefs]="columnDefs" 
             [defaultColDef]="defaultColDef"
-            class="ag-theme-alpine"
-            [style.height]="getGridHeight()"
-            style="width: 100%;"
+            class="ag-theme-alpine" 
+            style="width: 100%;" 
             (cellClicked)="onCellClicked($event)"
-            [rowHeight]="rowHeight"
-            [domLayout]="'autoHeight'"
-          ></ag-grid-angular>
-          
-          
-            
-            
-
+            [rowHeight]="rowHeight" 
+            [domLayout]="'autoHeight'" 
+            [headerHeight]="headerHeight"
+            ></ag-grid-angular>
             <!-- <table class="table table-bordered">
                 <thead>
                     <tr>

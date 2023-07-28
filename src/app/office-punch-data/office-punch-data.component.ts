@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
-
+import { DatePipe } from '@angular/common';
+import { PunchtimelistService } from '../services/punchtimelist.service';
 @Component({
   selector: 'app-office-punch-data',
   templateUrl: './office-punch-data.component.html',
   styleUrls: ['./office-punch-data.component.scss']
 })
+
 export class OfficePunchDataComponent {
   checkObj: checkObj;
   checkArr: checkObj[] = [];
+  DateArr: [] = [];
   checkList: any = [];
-
-  constructor() {
+  FullDayHours: string = '';
+  DateDeatils: string = '';
+  SelectedDate: any = '';
+  constructor(public datePipe: DatePipe, private _punchtimelist: PunchtimelistService) {
     this.checkObj = new checkObj();
   }
 
@@ -43,7 +48,8 @@ export class OfficePunchDataComponent {
 
     modelData.result = `${hours}:${minutes}:${seconds}`;
   }
-  getTotalDuration(): string { 
+
+  getTotalDuration(): string {
     let totalMillis = 0;
     for (const item of this.checkArr) {
       const checkInTime = new Date(`2000-01-01T${item.checkin}`);
@@ -60,7 +66,6 @@ export class OfficePunchDataComponent {
     return `${hours}:${minutes}:${seconds}`;
   }
 
-
   getAllcheckData() {
     const isData = localStorage.getItem('TimeData');
     if (isData != null) {
@@ -70,7 +75,6 @@ export class OfficePunchDataComponent {
   }
 
   onEdit(item: checkObj) {
-    debugger
     this.checkObj = Object.assign({}, item);
   }
 
@@ -82,12 +86,38 @@ export class OfficePunchDataComponent {
     localStorage.setItem('TimeData', JSON.stringify(this.checkArr));
     this.getAllcheckData();
   }
+  getTodayDate() {
+    const today = new Date();
+    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short', year: 'numeric' };
+    return today.toLocaleDateString(undefined, options);
+  }
+  SaveDaily() {
+    // Step 1: Get the total duration (FullDayHours)
+    this.FullDayHours = this.getTotalDuration();
 
+    // Step 2: Get today's date (SelectedDate)
+    this.SelectedDate = this.getTodayDate();
+    // Step 3: Store the FullDayHours and SelectedDate in localStorage.
+    localStorage.setItem('FullDayHours', this.FullDayHours);
+    localStorage.setItem('SelectedDate', this.SelectedDate);
+    // Step 4: Call the addDailyPuchData method from the _punchtimelist service and subscribe to its response.
+    // Assuming addDailyPuchData expects an object as its parameter containing FullDayHours and SelectedDate.
+    const data = { FullDayHours: this.FullDayHours, SelectedDate: this.SelectedDate };
+    this._punchtimelist.addDailyPuchData(data).subscribe(
+      (response) => {
+        // Handle the response here if needed.
+      },
+      (error) => {
+        // Handle the error here if needed.
+      }
+    );
+  }
   ngOnInit(): void {
+    this.FullDayHours = localStorage.getItem('FullDayHours') || '';
+    this.SelectedDate = localStorage.getItem('SelectedDate') || '';
     this.getAllcheckData();
   }
 }
-
 export class checkObj {
   checkId: number;
   checkin: string;
@@ -99,5 +129,6 @@ export class checkObj {
     this.checkin = '';
     this.checkout = '';
     this.result = '';
+
   }
 }

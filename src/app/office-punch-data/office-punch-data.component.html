@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-sm">
                         <label class="form-label">Check Out</label>
-                        <input type="time"  required #checkout="ngModel" class="form-control"
+                        <input type="time" required #checkout="ngModel" class="form-control"
                             [(ngModel)]="checkObj.checkout" name="checkout">
                     </div>
                 </div>
@@ -47,27 +47,58 @@
                             </tr>
                         </thead>
                         <tbody>
-                      
-                                <tr *ngFor="let item of checkArr, let sr = index" style="vertical-align: middle;">
-                                    <td width="5%" >{{ sr + 1 }}</td>
-                                    <td width="30%">{{ item.checkin }}</td>
-                                    <td width="30%">{{ item.checkout }}</td>
-                                    <td style="text-align: center;" width="20%">
 
-                                        <button class="btn btn-primary me-2" (click)="onEdit(item)"><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-primary" (click)="onDelete(item)"><i class="bi bi-trash3-fill"></i></button>
-                                    </td>
-                                    <td width="15%">{{item.result}}</td>
-                                  
-                                    
-                                </tr>
-                                <tr>
-                                    <td colspan="3"></td>
-                                    <td><strong>Total Duration:</strong></td>
-                                    <td><strong>{{ getTotalDuration() }}</strong></td>
-                                  </tr>
-                          
-                           
+                            <tr *ngFor="let item of checkArr, let sr = index" style="vertical-align: middle;">
+                                <td width="5%">{{ sr + 1 }}</td>
+                                <td width="30%">{{ item.checkin }}</td>
+                                <td width="30%">{{ item.checkout }}</td>
+                                <td style="text-align: center;" width="20%">
+
+                                    <button class="btn btn-primary me-2" (click)="onEdit(item)"><i
+                                            class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-primary" (click)="onDelete(item)"><i
+                                            class="bi bi-trash3-fill"></i></button>
+                                </td>
+                                <td width="15%">{{item.result}}</td>
+
+
+                            </tr>
+                            <tr>
+                                <td colspan="2"><strong>Total Duration:</strong></td>
+                                <td><strong>{{ getTotalDuration() }}</strong></td>
+                                <td><strong>{{ getTodayDate() }}</strong></td>
+                                <td>
+                                    <button class="btn btn-primary" (click)="SaveDaily()">Save Daily</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <h1>Data here</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Full Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>{{ SelectedDate }}</th>
+                                <th>{{ FullDayHours }}</th>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

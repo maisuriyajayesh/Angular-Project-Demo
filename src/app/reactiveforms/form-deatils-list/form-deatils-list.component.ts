@@ -14,15 +14,10 @@ export class FormDeatilsListComponent implements OnInit {
     suppressMovable: true
     //resizable: true
   };
-  rowHeight = 55;
-  getGridHeight(): string {
-    const rowHeight = 55; // Adjust the value based on your row height
-    const headerHeight = 55; // Adjust the value based on your header height
-    const rowCount = this.contactFormArr.length;
-    const totalHeight = (rowCount * rowHeight) + headerHeight;
-    return totalHeight + 'px';
-  }
-
+  
+  public rowHeight = 45;
+  public headerHeight = 45;
+  
   constructor(
     private router: Router
   ) {
@@ -41,7 +36,6 @@ export class FormDeatilsListComponent implements OnInit {
           <button class="btn btn-sm btn-primary m-0 bi bi-pencil-fill" data-action-type="editFormData"></button>
             <button class="btn btn-sm btn-danger m-0 bi bi-trash3-fill" data-action-type="removeFormData"></button>
           </div>  
-          
           `;
         },
       }
@@ -96,6 +90,5 @@ export class FormDeatilsListComponent implements OnInit {
     if (existingData) {
       this.contactFormArr = JSON.parse(existingData);
     }
-
   }
 }

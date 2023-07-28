@@ -34,6 +34,10 @@ import { GridViewHightComponent } from './grid-view-hight/grid-view-hight.compon
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { OfficePunchDataComponent } from './office-punch-data/office-punch-data.component';
+import { DatePipe } from '@angular/common';
+ 
+export class YourComponentModule { }
+
 
 @NgModule({
   declarations: [
@@ -77,7 +81,7 @@ import { OfficePunchDataComponent } from './office-punch-data/office-punch-data.
 
     
   ],
-  providers: [PostService],
+  providers: [PostService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
