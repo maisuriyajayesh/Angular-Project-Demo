@@ -97,21 +97,35 @@ export class OfficePunchDataComponent {
 
     // Step 2: Get today's date (SelectedDate)
     this.SelectedDate = this.getTodayDate();
-    // Step 3: Store the FullDayHours and SelectedDate in localStorage.
-    localStorage.setItem('FullDayHours', this.FullDayHours);
+
+    // Step 3: Retrieve the previously stored SelectedDate from localStorage
+    const storedSelectedDate = localStorage.getItem('SelectedDate');
+
+    // Step 4: Compare the current SelectedDate with the stored SelectedDate
+    if (storedSelectedDate === this.SelectedDate) {
+      // If they are the same, update the FullDayHours in localStorage
+      localStorage.setItem('FullDayHours', this.FullDayHours);
+
+    }
+
+    // Step 5: Always store the current SelectedDate in localStorage
     localStorage.setItem('SelectedDate', this.SelectedDate);
-    // Step 4: Call the addDailyPuchData method from the _punchtimelist service and subscribe to its response.
+
+    // Step 6: Call the addDailyPuchData method from the _punchtimelist service and subscribe to its response.
     // Assuming addDailyPuchData expects an object as its parameter containing FullDayHours and SelectedDate.
     const data = { FullDayHours: this.FullDayHours, SelectedDate: this.SelectedDate };
     this._punchtimelist.addDailyPuchData(data).subscribe(
       (response) => {
-        // Handle the response here if needed.
+        //this.FullDayHours = ''; // Clear FullDayHours
+        //this.checkArr = []; // Clear checkArr or any other data structure you want to clear
+        //localStorage.removeItem('TimeData'); // Remove the saved data from localStorage
       },
       (error) => {
         // Handle the error here if needed.
       }
     );
   }
+
   ngOnInit(): void {
     this.FullDayHours = localStorage.getItem('FullDayHours') || '';
     this.SelectedDate = localStorage.getItem('SelectedDate') || '';
