@@ -1,7 +1,8 @@
 .navbar-nav {
-    width: 250px;
+    width: 300px;
     background-color: #f1f1f1;
     height: 100vh;
+    overflow-y: auto;
     .nav-item {
         a {
             display: block;

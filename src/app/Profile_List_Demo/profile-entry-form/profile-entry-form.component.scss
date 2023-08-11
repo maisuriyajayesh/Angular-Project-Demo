@@ -1,0 +1,46 @@
+.table {
+    thead {
+        tr {
+            th {
+                font-size: 14px;
+                color: #383838;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                max-width: 100px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                vertical-align: middle;
+
+                .btn {
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 16px;
+                    padding: 8px 0;
+
+                    &.edit {
+                        background-color: #a13feb;
+                        color: #fff;
+                    }
+
+                    &.remove {
+                        background-color: red;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+.profile-image {
+    max-width: 100px; /* Set the maximum width for the image */
+    max-height: 100px; /* Set the maximum height for the image */
+  }

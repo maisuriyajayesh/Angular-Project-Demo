@@ -23,11 +23,21 @@ import { ReactiveFormSetupComponent } from './reactive-form-setup/reactive-form-
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { GridViewHightComponent } from './grid-view-hight/grid-view-hight.component';
 import { OfficePunchDataComponent } from './office-punch-data/office-punch-data.component';
+import { ProfileEntryFormComponent } from './Profile_List_Demo/profile-entry-form/profile-entry-form.component';
+import { AllProflieDataListComponent } from './Profile_List_Demo/all-proflie-data-list/all-proflie-data-list.component';
 
 const routes: Routes = [
   {
     path: 'header',
     component: HeaderComponent,
+  },
+  {
+    path: 'profile-entry-form',
+    component: ProfileEntryFormComponent,
+  },
+  {
+    path: 'all-proflie-data-list',
+    component: AllProflieDataListComponent,
   },
   {
     path: 'template-driven-form',

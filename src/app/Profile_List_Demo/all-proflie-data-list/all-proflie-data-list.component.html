@@ -1,0 +1,19 @@
+ <!-- <div class="row" *ngIf="showAllDataFlag"> -->
+    <div class="row">
+    <div class="col-24 text-end"><button type="button" class="btn btn-primary viewall" (click)="BackToList()">Back To From </button></div>
+    <div class="col-sm-3">
+        <div class="card" *ngFor="let item of studentData; let i = index">
+            <div class="img"></div>
+            <div class="fullName">{{ item.firstName }} {{ item.lastName }}</div>
+            <div class="gender">{{ item.gender }}</div>
+            <div class="Email">{{ item.Email }}</div>
+            <div class="phoneNumber">{{ item.phoneNumber }}</div>
+            <div class="birthDate">{{ item.birthDate }}</div>
+            <div class="jobRole">{{ item.jobRole }}</div>
+            <div class="department">{{ item.department }}</div>
+            <div class="city">{{ item.city }}</div>
+            <div class="state">{{ item.state }}</div>
+            <div class="contry">{{ item.contry }}</div>
+        </div>
+    </div>
+</div>

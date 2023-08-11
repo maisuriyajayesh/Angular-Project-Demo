@@ -35,6 +35,8 @@ import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { OfficePunchDataComponent } from './office-punch-data/office-punch-data.component';
 import { DatePipe } from '@angular/common';
+import { ProfileEntryFormComponent } from './Profile_List_Demo/profile-entry-form/profile-entry-form.component';
+import { AllProflieDataListComponent } from './Profile_List_Demo/all-proflie-data-list/all-proflie-data-list.component';
  
 export class YourComponentModule { }
 
@@ -65,7 +67,9 @@ export class YourComponentModule { }
     ReactiveFormSetupComponent,
     ToDoListComponent,
     GridViewHightComponent,
-    OfficePunchDataComponent
+    OfficePunchDataComponent,
+    ProfileEntryFormComponent,
+    AllProflieDataListComponent
     
   ],
   imports: [

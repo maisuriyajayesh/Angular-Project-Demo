@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PunchtimelistService {
-
+export class ProfileDataEntryService {
   constructor( private _http: HttpClient) { }
-   addDailyPuchData(data : any) : Observable<any> {
-    return this._http.post('http://localhost:3000/Profile-Data-entry', data)
-  }
+  profileEntryData(data : any) : Observable<any> {
+   return this._http.post('http://localhost:3000/Profile-Data-entry', data)
+ }
+
 }
