@@ -62,7 +62,7 @@
         <div class="col-sm">
             <div class="form-group">
                 <label>Profile Photo</label>
-                <input type="file" class="form-control" formControlName="profilePic">
+                <input type="file" class="form-control" formControlName="profilePic" (change)="onFileSelected($event)">
             </div>
         </div>
         <div class="col-sm">
@@ -144,8 +144,12 @@
                     <td>{{item.Email}}</td>
                     <td>{{item.phoneNumber}}</td>
                     <td>{{item.birthDate}}</td>
-                    <td><img *ngIf="item.profilePic" [src]="item.profilePic" alt="Profile Pic" class="profile-image">
-                    </td>
+                    <td>
+                        <img [src]="imagePreview" alt="Profile Picture">
+
+                      </td>
+                      
+                                            
                     <td>{{item.jobRole}}</td>
                     <td>{{item.department}}</td>
                     <td>{{item.city}}</td>

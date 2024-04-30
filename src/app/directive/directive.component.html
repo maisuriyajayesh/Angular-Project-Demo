@@ -1,4 +1,4 @@
-<h1 class="mt-3 mb-3">Directive</h1>
+<!-- <h1 class="mt-3 mb-3">Directive</h1>
 <div class="container">
   <div class="row">
     <div class="col">
@@ -52,4 +52,25 @@
         </div>
     </div>
   </div>
+</div> -->
+
+<div #outerDiv [style.height.px]="outerDivHeight" style="background-color: aquamarine; margin-bottom: 20px;">
+  <button (click)="onButtonClick('plus')" style="margin: 18px  0  0  0;">Height Plus</button>
+  <button (click)="onButtonClick('minus')" style="margin: 0;">Height Minus</button>
 </div>
+
+<div #bottomDiv [style.height.px]="bottomDivHeight" style="background-color: #f1f1f1; overflow-y: auto;">
+  <!-- Your text div here -->
+  <div>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque molestie malesuada accumsan. Vestibulum a odio
+      porttitor, cursus enim in, lobortis arcu. Praesent eu mauris aliquet, aliquam nisi sit amet, sollicitudin purus.
+      Etiam vulputate sapien diam, id tristique ligula egestas vitae. Aliquam et ex eget augue aliquet tempus ac in velit.
+      Proin consequat maximus elit, at vestibulum massa consectetur a. Curabitur finibus condimentum ligula, at tempus
+      nisl laoreet quis. Integer volutpat, massa id tincidunt sagittis, nunc nisl convallis elit, id pellentesque nulla
+      purus non elit. Sed euismod semper eros, ac pharetra ipsum pharetra quis. Nam viverra tortor at lectus malesuada,
+      sed eleifend tortor pharetra. Proin eget luctus velit, vitae convallis mi
+    </p>
+  </div>
+</div>
+ 

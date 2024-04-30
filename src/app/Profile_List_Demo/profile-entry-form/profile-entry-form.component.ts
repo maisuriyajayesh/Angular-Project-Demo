@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProfileDataEntryService } from '../../services/profile-data-entry.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-entry-form',
@@ -13,9 +14,10 @@ export class ProfileEntryFormComponent implements OnInit {
   profileFormData: any[] = [];
   editIndex: number = -1;
   showAllDataFlag: boolean = false;
-  studentData:any;
-
-  constructor(private _profileFrom: FormBuilder, private _profileDatalist: ProfileDataEntryService, private router: Router) {
+  studentData: any;
+  imagePreview: string | undefined;
+  selectedImageFile: File | null = null;
+  constructor(private _profileFrom: FormBuilder, private _profileDatalist: ProfileDataEntryService, private router: Router, private http: HttpClient) {
     this.profileForm = this._profileFrom.group({
       firstName: '',
       lastName: '',
@@ -31,39 +33,76 @@ export class ProfileEntryFormComponent implements OnInit {
       contry: '',
     });
   }
-  onSubmit() {
-    if (this.profileForm.valid) {
-      // If editIndex is -1, it means this is a new entry.
-      if (this.editIndex === -1) {
-        this.profileFormData.push(this.profileForm.value);
-      } else {
-        // Update the existing row with the edited data.
-        this.profileFormData[this.editIndex] = this.profileForm.value;
-        // Reset editIndex to -1 after updating the row.
-        this.editIndex = -1;
-      }
+  onFileSelected(event: any): void {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      const filename = file.name;
+      const profilePicControl = this.profileForm.get('profilePic');
 
-      // Save the data to local storage
-      localStorage.setItem('profileData', JSON.stringify(this.profileFormData));
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result as string; // Store the base64 data
 
-      // Call the API to add data to the backend only if there is data in the profileFormData
-      if (this.profileFormData.length > 0) {
-        this._profileDatalist.profileEntryData(this.profileForm.value).subscribe(
-          (response) => {
-            // Handle the response if needed
-            //console.log('Data added successfully to the backend:', response);
-          },
-          (error) => {
-            // Handle the error if there is any
-            // console.error('Error adding data to the backend:', error);
-          }
-        );
-      }
-      // Reset the form after submission
-      this.profileForm.reset();
+        if (profilePicControl) {
+          profilePicControl.setValue(filename);
+        }
+      };
+
+      // Read the selected image data as a base64-encoded string
+      reader.readAsDataURL(file);
     }
   }
 
+  getProfilePicUrl(): string {
+    return this.imagePreview || ''; // Return the base64 data for the previewed image
+  }
+
+  onSubmit() {
+    if (this.profileForm.valid) {
+      if (this.selectedImageFile) {
+        // Upload the selected image file
+        this._profileDatalist.uploadProfilePic(this.selectedImageFile).subscribe(
+          (uploadResponse) => {
+           // console.log('File uploaded successfully', uploadResponse);
+            
+            // After successful image upload, continue with form data submission
+            this.submitFormData();
+          },
+          (uploadError) => {
+           // console.error('File upload error', uploadError);
+            // Handle upload error if needed
+          }
+        );
+      } else {
+        // No image selected, directly submit form data
+        this.submitFormData();
+      }
+    }
+  }
+  
+  private submitFormData() {
+    if (this.editIndex === -1) {
+      this.profileFormData.push(this.profileForm.value);
+    } else {
+      this.profileFormData[this.editIndex] = this.profileForm.value;
+      this.editIndex = -1;
+    }
+    localStorage.setItem('profileData', JSON.stringify(this.profileFormData));
+    
+    if (this.profileFormData.length > 0) {
+      this._profileDatalist.profileEntryData(this.profileForm.value).subscribe(
+        (response) => {
+          // Handle successful form data submission if needed
+        },
+        (error) => {
+          // Handle form data submission error if needed
+        }
+      );
+    }
+    
+    this.profileForm.reset();
+  }
+  
   editData(index: number) {
     if (index >= 0 && index < this.profileFormData.length) {
       this.editIndex = index; // Store the index of the data being edited
@@ -98,22 +137,22 @@ export class ProfileEntryFormComponent implements OnInit {
       console.error('Invalid index provided for removing data.');
     }
   }
- 
+
   clearForm() {
     this.profileForm.reset();
     this.editIndex = -1;
   }
-  viewall(){
-    //this.showAllDataFlag = !this.showAllDataFlag;
-     this.studentData = JSON.parse(JSON.stringify(this.profileFormData))
-     this.router.navigate(['all-proflie-data-list']);
+  viewall() {
+    this.router.navigate(['/all-proflie-data-list'], {
+      queryParams: { profileData: JSON.stringify(this.profileFormData) }
+    });
   }
+
   ngOnInit(): void {
     const savedData = localStorage.getItem('profileData');
     if (savedData) {
       this.profileFormData = JSON.parse(savedData);
     }
-     
   }
 
 }

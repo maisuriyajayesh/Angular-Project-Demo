@@ -1,19 +1,47 @@
  <!-- <div class="row" *ngIf="showAllDataFlag"> -->
     <div class="row">
     <div class="col-24 text-end"><button type="button" class="btn btn-primary viewall" (click)="BackToList()">Back To From </button></div>
-    <div class="col-sm-3">
-        <div class="card" *ngFor="let item of studentData; let i = index">
+    <div class="col-sm-3" *ngFor="let item of studentData; let i = index">
+        <div class="card">
             <div class="img"></div>
-            <div class="fullName">{{ item.firstName }} {{ item.lastName }}</div>
-            <div class="gender">{{ item.gender }}</div>
-            <div class="Email">{{ item.Email }}</div>
-            <div class="phoneNumber">{{ item.phoneNumber }}</div>
-            <div class="birthDate">{{ item.birthDate }}</div>
-            <div class="jobRole">{{ item.jobRole }}</div>
-            <div class="department">{{ item.department }}</div>
-            <div class="city">{{ item.city }}</div>
-            <div class="state">{{ item.state }}</div>
-            <div class="contry">{{ item.contry }}</div>
+            <div class="row mt-3">
+                <div class="col"><div class="fullName"><label>Full Name</label>{{ item.firstName }} {{ item.lastName }}</div></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm">
+                    <div class="gender"><label>Gender</label>{{ item.gender }}</div>
+                </div>
+                <div class="col-sm">
+                    <div class="birthDate"><label>Birth Date</label>{{ item.birthDate }}</div>
+                </div>
+            </div> 
+            <div class="row mt-3">
+                <div class="col-sm">
+                    <div class="Email"><label>Email</label>{{ item.Email }}</div>
+                </div>
+                <div class="col-sm">
+                    <div class="phoneNumber"><label>Phone Number</label>{{ item.phoneNumber }}</div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm">
+                    <div class="department"><label>Department</label>{{ item.department }}</div>
+                </div>
+                <div class="col-sm">
+                    <div class="jobRole"><label>Job Role</label>{{ item.jobRole }}</div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm">
+                    <div class="city"><label>City</label>{{ item.city }}</div>
+                </div>
+                <div class="col-sm">
+                    <div class="state"><label>State</label>{{ item.state }}</div>
+                </div>
+                <div class="col-sm">
+                    <div class="contry"><label>Contry</label>{{ item.contry }}</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
